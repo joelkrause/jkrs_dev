@@ -6,13 +6,16 @@
           <img :src="page.HomeItem.content.hero_image.filename">
         </div>
         <div class="col-span-2 flex items-center">
-          <div v-html="$storyapi.richTextResolver.render(page.HomeItem.content.hero_content)" />
+          <div
+            class="text-xl"
+            v-html="$storyapi.richTextResolver.render(page.HomeItem.content.hero_content)"
+          />
         </div>
       </div>
     </div>
     <div class="latest_posts">
       <div class="container">
-        <div class="latest_posts-header flex items-center justify-between">
+        <div class="latest_posts-header flex items-center justify-between mb-16">
           <h2>
             Latest Posts
           </h2>
@@ -60,6 +63,7 @@ export default {
               categories {
                 name
                 slug
+                content
               }              
             }
           }

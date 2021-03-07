@@ -56,6 +56,7 @@ export default {
               categories {
                 name
                 slug
+                content               
               }
             }
           }

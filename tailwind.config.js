@@ -78,7 +78,7 @@ module.exports = {
                     fontWeight: '700',
                     fontSize: '1.5rem',
                     '@screen md': {
-                        fontSize: '2.5rem'
+                        fontSize: '3rem'
                     }
                 },
                 'h2': {

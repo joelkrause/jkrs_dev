@@ -20,7 +20,7 @@
           <li
             v-for="category in post.PostItem.content.categories"
             :key="category.index"
-            class="text-xs text-gray-100 border border-gray-100 py-1 px-3 rounded-full mr-4"
+            :class="`text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4`"
             v-html="category.name"
           />
         </ul>
@@ -56,6 +56,7 @@ export default {
               categories {
                 name
                 slug
+                content
               }
             }
         }

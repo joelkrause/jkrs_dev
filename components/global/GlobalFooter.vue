@@ -5,7 +5,7 @@
         <div class="col-span-1">
           <div class="logo">
             <nuxt-link to="/">
-              &copy; Joel Krause
+              &copy; Joel Krause {{ $dateFns.format(new Date(), 'Y') }}
             </nuxt-link>
           </div>
         </div>

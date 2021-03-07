@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/posts/${post.slug}`"
-    class="post_item flex items-center py-8"
+    class="post_item flex items-center p-3 mb-5 rounded-md hover:bg-gray-700"
   >
     <img
       :src="post.content.post_icon"
@@ -14,7 +14,7 @@
           <li
             v-for="category in post.content.categories"
             :key="category.index"
-            class="text-xs text-gray-100 border border-gray-100 py-1 px-3 rounded-full mr-4"
+            :class="`text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4`"
             v-html="category.name"
           />
         </ul>
