@@ -11,9 +11,22 @@
   "dependencies": {
     "@nuxt/content": "^1.11.1",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "stylelint-scss": "^3.18.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.4.2"
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.18.0",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-vue": "^7.5.0",
+    "graphql": "^15.5.0",
+    "nuxt-graphql-request": "^4.0.0",
+    "stylelint": "^13.9.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0"
   }
 }

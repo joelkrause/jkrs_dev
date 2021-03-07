@@ -21,6 +21,11 @@ export default {
     ]
   },
 
+  pageTransition: {
+    name: "default",
+    mode: "out-in",
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -36,6 +41,15 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    'nuxt-graphql-request',
+    ['@nuxtjs/eslint-module', {
+      fix: true
+    }],
+    // https://go.nuxtjs.dev/stylelint
+    ['@nuxtjs/stylelint-module', {
+      fix: true,
+      configPage: 'stylelint.config.js'
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -48,6 +62,23 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
+  tailwindcss: {
+    configPath: '~/tailwind.config.js'
+  },
+  graphql: {
+    clients: {
+      default: {
+        endpoint: 'https://gapi.storyblok.com/v1/api',
+        options: {
+          headers: {
+            token: 'sZUcBEZiCUQNtT3CQAZrzgtt',
+          },
+        },
+      },
+    },
+    options: {},
+    useFetchPolyfill: true,
+    includeNodeModules: true,
+  },
 }
