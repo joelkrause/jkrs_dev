@@ -71,7 +71,16 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   tailwindcss: {
-    configPath: '~/tailwind.config.js'
+    configPath: '~/tailwind.config.js',
+    config: {
+      purge: {
+        content: [
+          'pages/**/**.vue',
+          'layouts/**/**.vue',
+          'components/**/**.vue'
+        ]
+      }
+    }
   },
   graphql: {
     clients: {
