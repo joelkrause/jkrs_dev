@@ -1,14 +1,13 @@
 <template>
   <nuxt-link
-    :to="post.full_slug"
+    :to="`/posts/${post.slug}`"
     class="post_item flex items-center py-8"
   >
     <img
-      v-if="post.content.post_icon"
       :src="post.content.post_icon"
-      class="max-w-icon h-auto mr-8"
+      class="max-w-icon h-auto mr-8 pointer-events-none"
     >
-    <div class="post_item-meta flex lg:items-center justify-between flex-1">
+    <div class="post_item-meta flex justify-between flex-1 pointer-events-none">
       <div>
         <h6 v-html="post.name" />
         <ul class="categories flex mt-4">
@@ -27,6 +26,7 @@
     </div>
   </nuxt-link>
 </template>
+
 <script>
 export default {
   props: ['post']

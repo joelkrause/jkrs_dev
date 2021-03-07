@@ -9,7 +9,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
     theme: {
         fontFamily: {
-            body: 'europa',
+            body: 'tenon',
         },
         screens: {
             'sm': '480px',
@@ -32,9 +32,15 @@ module.exports = {
                 md: "100%",
                 lg: "1024px",
                 xl: "1280px"
-             }
+            }
         },
         extend: {
+            colors: {
+                darkGray: '#222',
+            },
+            backgroundColor: {
+                darkGray: '#222'
+            },
             maxWidth: {
                 icon: '60px',
             }
@@ -59,7 +65,7 @@ module.exports = {
             addBase({
                 'body': {
                     backgroundColor: '#222',
-                    color:'#fff',
+                    color: '#fff',
                     fontFamily: config('theme.fontFamily.body'),
                     fontWeight: '400',
                     fontSize: '1rem'
@@ -72,7 +78,7 @@ module.exports = {
                     fontWeight: '700',
                     fontSize: '1.5rem',
                     '@screen md': {
-                        fontSize: '2rem'
+                        fontSize: '2.5rem'
                     }
                 },
                 'h2': {
@@ -122,7 +128,7 @@ module.exports = {
                         fontSize: '0.975rem'
                     },
                     '@screen lg': {
-                        fontSize: '1rem'
+                        fontSize: '1.15rem'
                     }
                 },
             })

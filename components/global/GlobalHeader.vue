@@ -1,9 +1,12 @@
 <template>
-  <div class="header p-8">
+  <div class="header p-8 sticky top-0 text-xl bg-darkGray">
     <div class="grid grid-cols-2">
       <div class="col-span-1">
         <div class="logo">
-          <nuxt-link to="/">
+          <nuxt-link
+            to="/"
+            class="font-bold"
+          >
             Joel Krause
           </nuxt-link>
         </div>

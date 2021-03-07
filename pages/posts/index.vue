@@ -49,7 +49,7 @@ export default {
             id
             name
             published_at
-            full_slug      
+            slug  
             content {
               post_hero
               post_icon

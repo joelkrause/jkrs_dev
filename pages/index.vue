@@ -54,7 +54,7 @@ export default {
             id
             name
             published_at
-            full_slug      
+            slug  
             content {
               post_icon
               categories {
