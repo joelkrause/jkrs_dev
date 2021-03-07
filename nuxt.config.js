@@ -1,3 +1,4 @@
+const axios = require('axios')
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -71,16 +72,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   tailwindcss: {
-    configPath: '~/tailwind.config.js',
-    config: {
-      purge: {
-        content: [
-          'pages/**/**.vue',
-          'layouts/**/**.vue',
-          'components/**/**.vue'
-        ]
-      }
-    }
+    exposeConfig: true,
   },
   graphql: {
     clients: {
@@ -102,4 +94,42 @@ export default {
     defaultLocale: 'en-AU',
     format: 'EEEE, Io MMMM yyyy'
   },
+  /**
+   * Routes
+   */
+   generate: {
+    generate: {
+      fallback: true,
+      fallback: 'index.html' // Replace with 404
+    },
+    routes: function (callback) {
+      const token = `sZUcBEZiCUQNtT3CQAZrzgtt`
+      const version = 'published'
+      let cache_version = 0
+  
+      let toIgnore = ['home', 'settings','categories','partners','team-members']
+      
+       // other routes that are not in Storyblok with their slug.
+      let routes = [] // adds / directly
+  
+       // Load space and receive latest cache version key to improve performance
+      axios.get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${token}`).then((space_res) => {
+  
+         // timestamp of latest publish
+        cache_version = space_res.data.space.version
+  
+         // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
+        axios.get(`https://api.storyblok.com/v1/cdn/links?token=${token}&version=${version}&cv=${cache_version}`).then((res) => {
+          Object.keys(res.data.links).forEach((key) => {
+            if (!toIgnore.includes(res.data.links[key].slug)) {
+              var fullSlug = res.data.links[key].slug
+                routes.push(fullSlug)
+            }
+          })
+  
+          callback(null, routes)
+        })
+      }) 
+    }
+  },  
 }
