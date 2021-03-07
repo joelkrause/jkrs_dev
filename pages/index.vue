@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="page_hero py-16">
+    <div class="page_hero pt-16 pb-24">
       <div class="container grid grid-cols-3 gap-8">
         <div class="col-span-1">
           <img :src="page.HomeItem.content.hero_image.filename">
@@ -16,7 +16,10 @@
           <h2>
             Latest Posts
           </h2>
-          <nuxt-link to="/posts">
+          <nuxt-link
+            to="/posts"
+            class="text-color-white border border-gray-100 py-2 px-4 rounded-full"
+          >
             All Posts
           </nuxt-link>
         </div>
@@ -51,7 +54,7 @@ export default {
             id
             name
             published_at
-            slug      
+            full_slug      
             content {
               post_icon
             }

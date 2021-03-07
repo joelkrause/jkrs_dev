@@ -11,20 +11,15 @@
       <div class="col-span-1">
         <div class="nav">
           <ul class="flex justify-end">
-            <li class="mr-8">
-              <nuxt-link to="/posts">
-                Posts
-              </nuxt-link>
-            </li>
-            <li class="mr-8">
-              <nuxt-link to="/about">
-                About
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/contact">
-                Contact
-              </nuxt-link>
+            <li
+              v-for="nav in navigation"
+              :key="nav.index"
+              class="ml-8"
+            >
+              <nuxt-link
+                :to="`/${nav.link.cached_url ? nav.link.cached_url : nav.link.url}`"
+                v-html="nav.title"
+              />
             </li>
           </ul>
         </div>
@@ -32,3 +27,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['navigation']
+}
+</script>
