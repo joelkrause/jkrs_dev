@@ -28,9 +28,6 @@
         />
       </div>
     </div>
-    <div class="container">
-      <pre>{{ posts.CategoryItems.items }}</pre>
-    </div>
   </div>
 </template>
 
@@ -56,6 +53,10 @@ export default {
             content {
               post_hero
               post_icon
+              categories {
+                name
+                slug
+              }
             }
           }
         }

@@ -65,7 +65,9 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    'storyblok-nuxt'
+  ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},

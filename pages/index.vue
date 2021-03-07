@@ -1,12 +1,12 @@
 <template>
   <div class="page">
     <div class="page_hero pt-16 pb-24">
-      <div class="container grid grid-cols-3 gap-8">
+      <div class="container grid grid-cols-3 gap-16">
         <div class="col-span-1">
           <img :src="page.HomeItem.content.hero_image.filename">
         </div>
-        <div class="col-span-2">
-          <div v-html="page.HomeItem.content.hero_content" />
+        <div class="col-span-2 flex items-center">
+          <div v-html="$storyapi.richTextResolver.render(page.HomeItem.content.hero_content)" />
         </div>
       </div>
     </div>
@@ -57,6 +57,10 @@ export default {
             full_slug      
             content {
               post_icon
+              categories {
+                name
+                slug
+              }              
             }
           }
         }        

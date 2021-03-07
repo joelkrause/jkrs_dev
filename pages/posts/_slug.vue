@@ -33,7 +33,7 @@
     </div>
     <div
       class="post_content container"
-      v-html="post.PostItem.content.body"
+      v-html="$storyapi.richTextResolver.render(post.PostItem.content.body)"
     />
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
               post_hero
               post_icon
               body
-              categories{
+              categories {
                 name
                 slug
               }

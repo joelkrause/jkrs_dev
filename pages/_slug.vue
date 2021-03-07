@@ -1,9 +1,15 @@
 <template>
   <div class="page">
     <div class="container">
-      <h1 v-html="page.PageItem.name" />
+      <h1
+        class="pb-8"
+        v-html="page.PageItem.name"
+      />
+      <div
+        class="page_body"
+        v-html="$storyapi.richTextResolver.render(page.PageItem.content.body)"
+      />
     </div>
-    <pre>{{ page }}</pre>
   </div>
 </template>
 
