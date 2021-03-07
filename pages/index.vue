@@ -3,10 +3,9 @@
     <div class="page_hero pt-16 pb-24">
       <div class="container grid grid-cols-3 gap-16">
         <div class="col-span-1">
-          <nuxt-img
+          <img
             :src="page.HomeItem.content.hero_image.filename"
-            fit="contain"
-          />
+          >
         </div>
         <div class="col-span-2 flex items-center">
           <div

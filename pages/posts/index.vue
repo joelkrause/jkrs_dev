@@ -96,7 +96,6 @@ export default {
               published_at
               slug  
               content {
-                post_hero
                 post_icon
                 categories {
                   name

@@ -2,11 +2,10 @@
   <div class="post">
     <div class="post_hero pt-32 pb-16">
       <div class="container">
-        <nuxt-img
+        <img
           :src="post.PostItem.content.post_icon"
           class="max-w-icon"
-          fit="contain"
-        />
+        >
 
         <h1
           class="mt-12 mb-6"
@@ -26,11 +25,10 @@
           />
         </ul>
 
-        <nuxt-img
+        <img
           :src="post.PostItem.content.post_hero"
           class="mt-16"
-          fit="contain"
-        />
+        >
       </div>
     </div>
     <div
