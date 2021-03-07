@@ -1,22 +1,29 @@
 <template>
   <div class="posts">
     <div class="page_hero pt-8 pb-16">
-      <div class="container">
+      <div class="container flex justify-between items-center">
         <h1>
-          Posts
+          Posts - {{ category }}
         </h1>
-        <ul
-          v-for="category in posts.CategoryItems.items"
-          :key="category.index"
+        <select
+          v-model="category"
+          class="bg-darkGray text-white"
+          @change="changeCategory"
         >
-          <li>
-            <button
-              type="button"
-              @click="changeCategory(category.slug)"
-              v-html="category.name"
-            />
-          </li>
-        </ul>
+          <option
+            selected
+            value="all"
+          >
+            Filter Posts
+          </option>
+          <option
+            v-for="category in posts.CategoryItems.items"
+            :key="category.index"
+            :value="category.slug"
+          >
+            {{ category.name }}
+          </option>
+        </select>
       </div>
     </div>
     <div class="posts">
@@ -67,10 +74,50 @@ export default {
     const posts = await $graphql.default.request(query)
     return { posts }
   },
+  data () {
+    return {
+      category: 'all'
+    }
+  },
   methods: {
-    changeCategory (category) {
-      console.log(category)
+    async changeCategory () {
+      const query = gql`
+        query posts {
+          CategoryItems {
+            items {
+              name
+              slug
+            }
+          }              
+          PostItems {
+            items {
+              id
+              name
+              published_at
+              slug  
+              content {
+                post_hero
+                post_icon
+                categories {
+                  name
+                  slug
+                  content               
+                }
+              }
+            }
+          }
+        }
+      `
+
+      const posts = await this.$graphql.default.request(query)
+      this.$set(this, 'posts', posts)
     }
   }
 }
 </script>
+
+<style>
+select {
+	appearance: none;
+}
+</style>

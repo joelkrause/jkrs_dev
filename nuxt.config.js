@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/tailwindcss',
     'nuxt-graphql-request',
     '@nuxtjs/date-fns',
+    '@nuxt/image',
     ['@nuxtjs/eslint-module', {
       fix: true
     }],
