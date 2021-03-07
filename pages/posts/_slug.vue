@@ -23,6 +23,7 @@
             :class="`text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4`"
             v-html="category.name"
           />
+          <PostLikes :likes="post.PostItem.content.likes" />
         </ul>
 
         <img
@@ -53,6 +54,7 @@ export default {
               post_hero
               post_icon
               body
+              likes
               categories {
                 name
                 slug

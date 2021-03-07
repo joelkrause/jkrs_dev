@@ -60,6 +60,7 @@ export default {
             content {
               post_hero
               post_icon
+              likes
               categories {
                 name
                 slug

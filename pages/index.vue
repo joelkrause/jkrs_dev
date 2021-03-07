@@ -15,6 +15,26 @@
         </div>
       </div>
     </div>
+    <div class="popular_posts mb-16">
+      <div class="container">
+        <div class="latest_posts-header flex items-center justify-between mb-16">
+          <h2>
+            Popular Posts
+          </h2>
+          <nuxt-link
+            to="/posts"
+            class="text-color-white border border-gray-100 py-2 px-4 rounded-full"
+          >
+            All Posts
+          </nuxt-link>
+        </div>
+        <PostItem
+          v-for="(post,index) in page.PostItems.items"
+          :key="index"
+          :post="post"
+        />
+      </div>
+    </div>
     <div class="latest_posts">
       <div class="container">
         <div class="latest_posts-header flex items-center justify-between mb-16">
@@ -62,6 +82,7 @@ export default {
             slug  
             content {
               post_icon
+              likes
               categories {
                 name
                 slug
