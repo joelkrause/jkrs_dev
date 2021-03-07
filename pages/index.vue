@@ -1,20 +1,30 @@
 <template>
   <div class="page">
-    <div class="page_hero">
-      <div class="container">
-        <div v-html="page.HomeItem.content.hero_content" />
+    <div class="page_hero py-16">
+      <div class="container grid grid-cols-3 gap-8">
+        <div class="col-span-1">
+          <img :src="page.HomeItem.content.hero_image.filename">
+        </div>
+        <div class="col-span-2">
+          <div v-html="page.HomeItem.content.hero_content" />
+        </div>
       </div>
-      <div class="latest_posts">
-        <div class="container">
+    </div>
+    <div class="latest_posts">
+      <div class="container">
+        <div class="latest_posts-header flex items-center justify-between">
           <h2>
             Latest Posts
           </h2>
-          <PostItem
-            v-for="(post,index) in page.PostItems.items"
-            :key="index"
-            :post="post"
-          />
+          <nuxt-link to="/posts">
+            All Posts
+          </nuxt-link>
         </div>
+        <PostItem
+          v-for="(post,index) in page.PostItems.items"
+          :key="index"
+          :post="post"
+        />
       </div>
     </div>
   </div>
@@ -31,6 +41,9 @@ export default {
           name
           content {
             hero_content
+            hero_image {
+              filename
+            }
           }          
         }
         PostItems(per_page: 5) {

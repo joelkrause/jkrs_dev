@@ -8,7 +8,10 @@
         >
 
         <h1 v-html="post.PostItem.name" />
-        <h2 v-html="post.PostItem.published_at" />
+        <h6
+          class="text-gray-300"
+          v-html="$dateFns.format(post.PostItem.published_at)"
+        />
 
         <img :src="post.PostItem.content.post_hero">
       </div>

@@ -9,12 +9,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/content": "^1.11.1",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "stylelint-scss": "^3.18.0"
   },
   "devDependencies": {
+    "@nuxt/image": "^0.4.1",
+    "@nuxtjs/date-fns": "^1.4.3",
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",

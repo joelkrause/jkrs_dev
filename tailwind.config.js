@@ -9,7 +9,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
     theme: {
         fontFamily: {
-            body: 'sans-serif',
+            body: 'europa',
         },
         screens: {
             'sm': '480px',
@@ -27,6 +27,12 @@ module.exports = {
                 lg: '4rem',
                 xl: '5rem',
             },
+            screens: {
+                sm: "100%",
+                md: "100%",
+                lg: "1024px",
+                xl: "1280px"
+             }
         },
         extend: {
             maxWidth: {

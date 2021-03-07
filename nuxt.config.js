@@ -3,22 +3,35 @@ export default {
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
-  server:{
-    port:9999
+  server: {
+    port: 9999
   },
   head: {
     title: 'jkrs.dev',
     htmlAttrs: {
       lang: 'en'
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: ''
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    }, {
+      rel: 'stylesheet',
+      href: 'https://use.typekit.net/hbe5dps.css'
+    }]
   },
 
   pageTransition: {
@@ -27,12 +40,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -42,6 +53,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     'nuxt-graphql-request',
+    '@nuxtjs/date-fns',
     ['@nuxtjs/eslint-module', {
       fix: true
     }],
@@ -53,10 +65,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
-  ],
+  modules: [],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
@@ -80,5 +89,10 @@ export default {
     options: {},
     useFetchPolyfill: true,
     includeNodeModules: true,
+  },
+  dateFns: {
+    locales: ['en-AU'],
+    defaultLocale: 'en-AU',
+    format: 'EEEE, Io MMMM yyyy'
   },
 }
