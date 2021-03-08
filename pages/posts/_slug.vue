@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <div class="post_hero pt-32 pb-16">
+    <div class="post_hero py-32">
       <div class="container">
         <img
           :src="post.PostItem.content.post_icon"
@@ -23,10 +23,14 @@
             :class="`text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4`"
             v-html="category.name"
           />
-          <PostLikes :likes="post.PostItem.content.likes" />
+          <PostLikes
+            :likes="post.PostItem.content.likes"
+            :post="post.PostItem"
+          />
         </ul>
 
         <img
+          v-if="post.PostItem.content.post_hero"
           :src="post.PostItem.content.post_hero"
           class="mt-16"
         >
@@ -36,6 +40,7 @@
       class="post_content container"
       v-html="$storyapi.richTextResolver.render(post.PostItem.content.body)"
     />
+    <PostPagination />
   </div>
 </template>
 
@@ -50,6 +55,7 @@ export default {
             name
             published_at
             slug      
+            id
             content {
               post_hero
               post_icon
