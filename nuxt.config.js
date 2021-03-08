@@ -35,6 +35,11 @@ export default {
     }]
   },
 
+  pageTransition: {
+    name: "default",
+    mode: "out-in"
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
