@@ -92,7 +92,7 @@ export default {
   dateFns: {
     locales: ['en-AU'],
     defaultLocale: 'en-AU',
-    format: 'EEEE, Io MMMM yyyy'
+    format: 'EEEE, Do MM yyyy'
   },
   /**
    * Routes

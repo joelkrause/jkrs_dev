@@ -28,11 +28,18 @@
     </div>
     <div class="posts">
       <div class="container">
-        <PostItem
-          v-for="(post,index) in posts.PostItems.items"
-          :key="index"
-          :post="post"
-        />
+        <div
+          v-for="date in groupedPosts"
+          :key="date"
+          class="mb-8"
+        >
+          <h4 v-html="date.date" />
+          <PostItem
+            v-for="(post,index) in date.posts"
+            :key="index"
+            :post="post"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +62,7 @@ export default {
           items {
             id
             name
+            first_published_at
             published_at
             slug  
             content {
@@ -77,41 +85,29 @@ export default {
   },
   data () {
     return {
-      category: 'all'
+      groupedPosts: []
     }
   },
-  methods: {
-    async changeCategory () {
-      const query = gql`
-        query posts {
-          CategoryItems {
-            items {
-              name
-              slug
-            }
-          }              
-          PostItems {
-            items {
-              id
-              name
-              published_at
-              slug  
-              content {
-                post_icon
-                categories {
-                  name
-                  slug
-                  content               
-                }
-              }
-            }
-          }
-        }
-      `
+  mounted () {
+    // this gives an object with dates as keys
+    const groups = this.posts.PostItems.items.reduce((groups, game) => {
+      const date = this.$dateFns.format(game.first_published_at, 'Y')
+      if (!groups[date]) {
+        groups[date] = []
+      }
+      groups[date].push(game)
+      return groups
+    }, {})
 
-      const posts = await this.$graphql.default.request(query)
-      this.$set(this, 'posts', posts)
-    }
+    // Edit: to add it in the array format instead
+    const groupArrays = Object.keys(groups).map((date) => {
+      return {
+        date,
+        posts: groups[date]
+      }
+    })
+
+    this.groupedPosts = groupArrays.reverse()
   }
 }
 </script>

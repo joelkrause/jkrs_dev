@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="page_hero pt-16 pb-24">
+    <div class="page_hero pt-24 pb-40">
       <div class="container grid grid-cols-3 gap-16">
         <div class="col-span-1">
           <img

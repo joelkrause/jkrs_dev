@@ -4,17 +4,21 @@
       <div class="container">
         <img
           :src="post.PostItem.content.post_icon"
-          class="max-w-icon"
+          class="max-w-iconLarge"
         >
 
         <h1
           class="mt-12 mb-6"
           v-html="post.PostItem.name"
         />
-        <h6
-          class="text-gray-300 mb-6"
-          v-html="$dateFns.format(post.PostItem.published_at)"
-        />
+        <div
+          class="text-gray-300 mb-6 flex"
+        >
+          Published On: {{ $dateFns.format(post.PostItem.first_published_at) }}
+          <span v-if="post.PostItem.published_at != post.PostItem.published_at">
+            Last updated: {{ $dateFns.format(post.PostItem.published_at) }}
+          </span>
+        </div>
 
         <ul class="categories flex">
           <li
@@ -53,6 +57,7 @@ export default {
       query post {
         PostItem(id: "${route.fullPath}") {
             name
+            first_published_at
             published_at
             slug      
             id

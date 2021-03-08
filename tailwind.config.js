@@ -42,7 +42,8 @@ module.exports = {
                 darkGray: '#222'
             },
             maxWidth: {
-                icon: '60px',
+                iconLarge: '60px',
+                icon: '30px',
             }
         }
     },
