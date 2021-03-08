@@ -110,7 +110,7 @@ export default {
       let toIgnore = ['home', 'settings','categories','partners','team-members']
       
        // other routes that are not in Storyblok with their slug.
-      let routes = [] // adds / directly
+      let routes = ['/posts','/'] // adds / directly
   
        // Load space and receive latest cache version key to improve performance
       axios.get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${token}`).then((space_res) => {
