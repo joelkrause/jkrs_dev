@@ -11,14 +11,10 @@
           class="mt-12 mb-6"
           v-html="post.PostItem.name"
         />
-        <div
-          class="text-gray-300 mb-6 flex"
-        >
-          Published On: {{ $dateFns.format(post.PostItem.first_published_at) }}
-          <span v-if="post.PostItem.published_at != post.PostItem.published_at">
-            Last updated: {{ $dateFns.format(post.PostItem.published_at) }}
-          </span>
-        </div>
+        <PostDate
+          :date="post.PostItem.first_published_at"
+          :updated="post.PostItem.published_at"
+        />
 
         <ul class="categories flex">
           <li

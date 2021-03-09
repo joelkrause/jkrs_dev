@@ -1,29 +1,21 @@
 <template>
   <div class="posts">
     <div class="page_hero pt-8 pb-16">
-      <div class="container flex justify-between items-center">
-        <h1>
-          Posts - {{ category }}
+      <div class="container flex flex-col">
+        <h1 class="mb-8">
+          All Posts
         </h1>
-        <select
-          v-model="category"
-          class="bg-darkGray text-white"
-          @change="changeCategory"
-        >
-          <option
-            selected
-            value="all"
+        <div class="categories flex flex-wrap items-center">
+          <span class="text-sm mr-4 text-gray-400 w-full lg:w-auto mb-5 lg:mb-0">Filter Categories</span>
+          <button
+            v-for="(button,index) in posts.CategoryItems.items"
+            :key="button.index"
+            :class="`text-xs border border-gray-400 py-1 px-3 mb-3 lg:mb-0 rounded-full mr-4 whitespace-no-wrap ${selectedCategories.findIndex(e => e.slug === button.slug) !== -1 ? 'bg-gray-400 text-black' : 'text-gray-400'}`"
+            @click="addCategory(button,index)"
           >
-            Filter Posts
-          </option>
-          <option
-            v-for="category in posts.CategoryItems.items"
-            :key="category.index"
-            :value="category.slug"
-          >
-            {{ category.name }}
-          </option>
-        </select>
+            {{ button.name }}
+          </button>
+        </div>
       </div>
     </div>
     <div class="posts">
@@ -85,7 +77,8 @@ export default {
   },
   data () {
     return {
-      groupedPosts: []
+      groupedPosts: [],
+      selectedCategories: []
     }
   },
   mounted () {
@@ -108,6 +101,17 @@ export default {
     })
 
     this.groupedPosts = groupArrays.reverse()
+  },
+  methods: {
+    addCategory (category) {
+      const index = this.selectedCategories.findIndex(e => e.slug === category.slug)
+
+      if (index > -1) {
+        this.selectedCategories.splice(index, 1)
+      } else {
+        this.selectedCategories.push(category)
+      }
+    }
   }
 }
 </script>

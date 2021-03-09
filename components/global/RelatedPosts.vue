@@ -43,7 +43,7 @@ export default {
     // Get posts
     const query = gql`
       query post {
-        PostItems(filter_query_v2: {categories: {in_array: "${this.categories}"}}, excluding_ids: "${this.id}") {
+        PostItems(filter_query_v2: {categories: {in: "${this.categories}"}}, excluding_ids: "${this.id}") {
           items {
             id
             name

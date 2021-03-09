@@ -1,5 +1,5 @@
 <template>
-  <div class="header p-8 lg:p-16 lg:pb-0 sticky top-0 text-xl bg-darkGray lg:bg-transparent">
+  <div class="header p-8 lg:12 lg:pb-0 xl2:p-16 sticky top-0 text-xl bg-darkGray lg:bg-transparent">
     <div class="grid grid-cols-2">
       <div class="col-span-1">
         <div class="logo">
