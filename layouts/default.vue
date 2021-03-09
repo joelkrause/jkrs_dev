@@ -36,8 +36,8 @@ export default {
 }
 </script>
 
-<style>
-.default-enter-active,
+<style lang="postcss">
+/* .default-enter-active,
 .default-leave-active {
 	transition-duration: 250ms;
 	transition-property: all;
@@ -46,8 +46,31 @@ export default {
 
 .default-enter,
 .default-leave-to {
-	filter: blur(20px);
+	filter: blur(20px);ty
 	opacity: 0;
 	transform: translateY(15px);
+} */
+
+code {
+	background: #111;
+	margin: 0 5px;
+	padding: 5px 10px;
+}
+
+pre {
+	background: #111;
+	border-radius: 5px;
+	padding: 25px;
+
+	@screen xl2 {
+		margin: 50px auto 50px -12.5%;
+		max-width: 100vw;
+		width: 125%;
+	}
+}
+
+pre code {
+	margin: 0;
+	padding: 0;
 }
 </style>
