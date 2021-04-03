@@ -19,15 +19,6 @@ module.exports = {
             'xl2': '1680px',
             'xl3': '1920px'
         },
-        container: {
-            center: true,
-            padding: {
-                default: '1rem',
-                sm: '2rem',
-                lg: '4rem',
-                xl: '5rem',
-            }
-        },
         extend: {
             colors: {
                 darkGray: '#222',
@@ -51,6 +42,9 @@ module.exports = {
         transform: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
         visibility: ['responsive', 'hover', 'focus', 'group-hover'],
         rotate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    },
+    corePlugins: {
+        container: false
     },
     plugins: [
         plugin(function ({
@@ -126,6 +120,22 @@ module.exports = {
                         fontSize: '1.15rem'
                     }
                 },
+                '.container': {
+                    maxWidth: '100%',
+                    margin: '0 auto',
+                    '@screen sm': {
+                        maxWidth: '600px',
+                    },
+                    '@screen md': {
+                        maxWidth: '700px',
+                    },
+                    '@screen lg': {
+                        maxWidth: '800px',
+                    },
+                    '@screen xl': {
+                        maxWidth: '50vw',
+                    },
+                }
             })
         })
     ],
