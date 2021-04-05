@@ -16,7 +16,7 @@
           :updated="post.PostItem.published_at"
         />
 
-        <ul class="categories flex">
+        <ul class="categories flex whitespace-no-wrap">
           <li
             v-for="category in post.PostItem.content.categories"
             :key="category.index"

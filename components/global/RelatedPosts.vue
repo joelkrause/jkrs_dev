@@ -7,7 +7,7 @@
         </h4>
         <nuxt-link
           to="/posts"
-          class="text-color-white border border-gray-100 py-2 px-4 rounded-full"
+          class="text-color-white border border-gray-100 py-2 px-4 rounded-full hover:text-darkGray hover:bg-white"
         >
           All Posts
         </nuxt-link>
@@ -67,7 +67,10 @@ export default {
     `
 
     this.$graphql.default.request(query).then((res) => {
+      console.log(res)
       this.posts = res
+    }).catch((err) => {
+      console.log(err)
     })
   }
 }

@@ -134,14 +134,14 @@ module.exports = {
                         maxWidth: '800px',
                     },
                     '@screen xl': {
-                        maxWidth: '50vw',
+                        maxWidth: '55vw',
                     },
                 }
             })
         })
     ],
     purge: {
-        enabled: true,
+        enabled: process.env.NODE_ENV === 'production',
         content: [
             'components/**/*.vue',
             'layouts/**/*.vue',

@@ -12,11 +12,11 @@
         class="pr-8"
         v-html="post.name"
       />
-      <ul class="categories flex items-start mt-4 lg:mt-0">
+      <ul class="categories flex items-start mt-4 lg:mt-0 ">
         <li
           v-for="category in post.content.categories"
           :key="category.index"
-          :class="`text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4 whitespace-no-wrap`"
+          :class="`whitespace-no-wrap text-xs text-${category.content.color_scheme} border border-${category.content.color_scheme} py-1 px-3 rounded-full mr-4 whitespace-no-wrap`"
           v-html="category.name"
         />
         <PostLikes :likes="post.content.likes" />
