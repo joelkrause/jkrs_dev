@@ -5,6 +5,7 @@
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 const plugin = require('tailwindcss/plugin')
+import colors from './modules/classes.json'
 
 module.exports = {
     theme: {
@@ -140,13 +141,16 @@ module.exports = {
         })
     ],
     purge: {
-        enabled: process.env.NODE_ENV === 'production',
+        enabled: true,
         content: [
             'components/**/*.vue',
             'layouts/**/*.vue',
             'pages/**/*.vue',
             'plugins/**/*.js',
             'nuxt.config.js',
-        ]
+        ],
+        options: {
+            safelist: colors
+        }
     }
 }

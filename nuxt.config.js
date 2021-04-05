@@ -1,4 +1,5 @@
 const axios = require('axios')
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -75,9 +76,15 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
+  },
   tailwindcss: {
-    exposeConfig: true,
+    exposeConfig: true
   },
   graphql: {
     clients: {
@@ -102,7 +109,7 @@ export default {
   /**
    * Routes
    */
-   generate: {
+  generate: {
     generate: {
       fallback: true,
       fallback: 'index.html' // Replace with 404
@@ -111,30 +118,30 @@ export default {
       const token = `sZUcBEZiCUQNtT3CQAZrzgtt`
       const version = 'published'
       let cache_version = 0
-  
-      let toIgnore = ['home', 'settings','categories','partners','team-members']
-      
-       // other routes that are not in Storyblok with their slug.
-      let routes = ['/posts','/'] // adds / directly
-  
-       // Load space and receive latest cache version key to improve performance
+
+      let toIgnore = ['home', 'settings', 'categories', 'partners', 'team-members']
+
+      // other routes that are not in Storyblok with their slug.
+      let routes = ['/posts', '/'] // adds / directly
+
+      // Load space and receive latest cache version key to improve performance
       axios.get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${token}`).then((space_res) => {
-  
-         // timestamp of latest publish
+
+        // timestamp of latest publish
         cache_version = space_res.data.space.version
-  
-         // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
+
+        // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
         axios.get(`https://api.storyblok.com/v1/cdn/links?token=${token}&version=${version}&cv=${cache_version}`).then((res) => {
           Object.keys(res.data.links).forEach((key) => {
             if (!toIgnore.includes(res.data.links[key].slug)) {
               var fullSlug = res.data.links[key].slug
-                routes.push(fullSlug)
+              routes.push(fullSlug)
             }
           })
-  
+
           callback(null, routes)
         })
-      }) 
+      })
     }
-  },  
+  },
 }
