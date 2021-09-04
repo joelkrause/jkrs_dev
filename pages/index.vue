@@ -2,12 +2,13 @@
   <div class="page">
     <div class="page_hero pt-24 pb-40">
       <div class="container grid grid-cols-12 gap-16">
-        <div class="col-span-5">
+        <div class="col-span-12 lg:col-span-5">
           <img
+            class="w-full"
             :src="page.HomeItem.content.hero_image.filename"
           >
         </div>
-        <div class="col-span-7 flex items-center">
+        <div class="col-span-12 lg:col-span-7 flex items-center">
           <div
             class="text-xl"
             v-html="$storyapi.richTextResolver.render(page.HomeItem.content.hero_content)"
